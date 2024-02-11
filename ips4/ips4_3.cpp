@@ -37,7 +37,7 @@ res maxSubarray(vector<int>& nums) {
 }
 
 int main() {
-    vector<int> nums = {4, -12, 3, 10, 4, 5, -15, 6, 7, 1, 3, 1, 4};
+    vector<int> nums = {4, -12, 3, 10, 4, 5, -30, 6, 7, 1, 3, 1, 4};
 
     high_resolution_clock::time_point start = high_resolution_clock::now();
     res result = maxSubarray(nums);
