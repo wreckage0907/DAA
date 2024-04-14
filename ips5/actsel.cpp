@@ -33,14 +33,6 @@ void actsel(vector<Activity> &activities) {
 }
 
 int main() {
-    // vector<Activity> activities = {
-    //     {1, 2, 0},
-    //     {5, 7, 1},
-    //     {3, 4, 2},
-    //     {0, 6, 3},
-    //     {5, 10, 4},
-    //     {8, 9, 5}
-    // };
 
     vector<Activity> activities;
     int n;
