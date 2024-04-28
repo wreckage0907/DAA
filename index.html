@@ -18,6 +18,7 @@
         color: #1d1d1d;
         text-align: center;
       }
+        
       .topic {
         background-color: #ffffff;
         padding: 10px;
@@ -32,7 +33,7 @@
       }
       .dropdown-btn {
         position: absolute;
-        top: 50%;
+        top: 30px;
         right: 12px;
         transform: translateY(-50%);
         background-color: transparent;
@@ -52,6 +53,14 @@
       }
       .dropdown-btn.active::after {
         transform: rotate(180deg);
+      }
+
+      .editor-container {
+        width: 800px;
+        height: 400px;
+        font-family: monospace;
+        font-size: 14px;
+        padding: 10px;
       }
     </style>
     <title>DAA</title>
@@ -100,6 +109,7 @@
         };
         return map[topic];
       }
+
       document.addEventListener("DOMContentLoaded", () => {
         gendiv();
         const dropdownButtons = document.querySelectorAll(".dropdown-btn");
@@ -108,22 +118,23 @@
             btn.classList.toggle("active");
             const topicDiv = btn.parentElement;
             if (btn.classList.contains("active")) {
-              const canvas = document.createElement("canvas");
-              canvas.width = 800;
-              canvas.height = 400;
-              topicDiv.appendChild(canvas);
-              topicDiv.style.backgroundColor = "white";
-
-              const editor = ace.edit(canvas);
-              editor.setTheme("ace/theme/twilight");
+              const editorContainer = document.createElement("div");
+              editorContainer.className = "editor-container";
+              topicDiv.appendChild(editorContainer);
+              const editor = ace.edit(editorContainer);
+              editor.setTheme("ace/theme/monokai");
               editor.session.setMode("ace/mode/c_cpp");
-              editor.setValue("Loading...");
+              fetch(filepath(topicDiv.querySelector("h2").textContent))
+                .then((response) => response.text())
+                .then((data) => {
+                  editor.setValue(data);
+                });
             } else {
-              const canvas = topicDiv.querySelector("canvas");
-              if (canvas) {
-                canvas.remove();
+              const editorContainer =
+                topicDiv.querySelector(".editor-container");
+              if (editorContainer) {
+                editorContainer.remove();
               }
-              topicDiv.style.backgroundColor = "";
             }
           });
         });
