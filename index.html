@@ -9,6 +9,12 @@
     ></script>
     <!-- <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script> -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="data:image/png;base64,iVBORw0KGgo="
+    />
     <style>
       body {
         background-color: lightblue;
@@ -18,7 +24,7 @@
         color: #1d1d1d;
         text-align: center;
       }
-        
+
       .topic {
         background-color: #ffffff;
         padding: 10px;
@@ -81,14 +87,27 @@
       ];
 
       const subtopic = {
-        "Sorting": ["InsertionSort","MergeSort","QuickSort"],
-        "Greedy": ["SolidKnapsack"],
-        "Maximum Subarray Sum": ["MSS_DAC","MSS_Kadane","MSS_Naive"],
-        "Dynamic Programming": ["LongestCommonSubsequence","MatrixChainMultiplication","TravellingSalesmanProblem"],
-        "String Matching ": ["KnuttMorrisPrattAlgorithm","NaiveStringMatching","RabinKarpAlgorithm"],
-        "Backtracking": ["NQueens","SudokuSolver","GraphColouring","SubsetSum","StringPermutation_BT"],
+        Sorting: ["InsertionSort", "MergeSort", "QuickSort"],
+        Greedy: ["SolidKnapsack"],
+        "Maximum Subarray Sum": ["MSS_DAC", "MSS_Kadane", "MSS_Naive"],
+        "Dynamic Programming": [
+          "LongestCommonSubsequence",
+          "MatrixChainMultiplication",
+          "TravellingSalesmanProblem",
+        ],
+        "String Matching ": [
+          "KnuttMorrisPrattAlgorithm",
+          "NaiveStringMatching",
+          "RabinKarpAlgorithm",
+        ],
+        Backtracking: [
+          "NQueens",
+          "SudokuSolver",
+          "GraphColouring",
+          "SubsetSum",
+          "StringPermutation_BT",
+        ],
       };
-
 
       function gendiv() {
         const container = document.querySelector(".container");
@@ -117,15 +136,15 @@
 
       function filepath(topic) {
         const map = {
-          "Sorting" : "./SORT",
-          "Greedy": "./GREEDY",
+          Sorting: "./SORT",
+          Greedy: "./GREEDY",
           "Maximum Subarray Sum": "./MSS",
           "Dynamic Programming": "./DP",
           "String Matching ": "./SM",
-          "Backtracking": "./BT",
+          Backtracking: "./BT",
         };
-        const ret={}
-        for(let i=0;i<subtopic[topic].length;i++){
+        const ret = {};
+        for (let i = 0; i < subtopic[topic].length; i++) {
           ret[subtopic[topic][i]] = `./${topic}/${subtopic[topic][i]}.cpp`;
         }
         return ret;
