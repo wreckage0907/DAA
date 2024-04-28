@@ -164,6 +164,7 @@
               const editor = ace.edit(editorContainer);
               editor.setTheme("ace/theme/monokai");
               editor.session.setMode("ace/mode/c_cpp");
+              editor.setValue("Loading...");
               fetch(filepath(topicDiv.querySelector("h2").textContent))
                 .then((response) => response.json())
                 .then((data) => {
