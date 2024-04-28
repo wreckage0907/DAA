@@ -74,10 +74,22 @@
       const topicNames = [
         "Sorting",
         "Greedy",
+        "Maximum Subarray Sum",
         "Dynamic Programming",
-        "Divide and Conquer",
+        "String Matching ",
         "Backtracking",
       ];
+
+      const subtopic = {
+        "Sorting": ["InsertionSort","MergeSort","QuickSort"],
+        "Greedy": ["SolidKnapsack"],
+        "Maximum Subarray Sum": ["MSS_DAC","MSS_Kadane","MSS_Naive"],
+        "Dynamic Programming": ["LongestCommonSubsequence","MatrixChainMultiplication","TravellingSalesmanProblem"],
+        "String Matching ": ["KnuttMorrisPrattAlgorithm","NaiveStringMatching","RabinKarpAlgorithm"],
+        "Backtracking": ["NQueens","SudokuSolver","GraphColouring","SubsetSum","StringPermutation_BT"],
+      };
+
+
       function gendiv() {
         const container = document.querySelector(".container");
 
@@ -105,8 +117,17 @@
 
       function filepath(topic) {
         const map = {
-          Sorting: "./SORT/insertion.cpp",
+          "Sorting" : "./SORT",
+          "Greedy": "./GREEDY",
+          "Maximum Subarray Sum": "./MSS",
+          "Dynamic Programming": "./DP",
+          "String Matching ": "./SM",
+          "Backtracking": "./BT",
         };
+        const ret={}
+        for(let i=0;i<subtopic[topic].length;i++){
+          ret[subtopic[topic][i]] = `./${topic}/${subtopic[topic][i]}.cpp`;
+        }
         return map[topic];
       }
 
@@ -125,7 +146,7 @@
               editor.setTheme("ace/theme/monokai");
               editor.session.setMode("ace/mode/c_cpp");
               fetch(filepath(topicDiv.querySelector("h2").textContent))
-                .then((response) => response.text())
+                .then((response) => response.json())
                 .then((data) => {
                   editor.setValue(data);
                 });
