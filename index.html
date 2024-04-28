@@ -128,7 +128,7 @@
         for(let i=0;i<subtopic[topic].length;i++){
           ret[subtopic[topic][i]] = `./${topic}/${subtopic[topic][i]}.cpp`;
         }
-        return map[topic];
+        return ret;
       }
 
       document.addEventListener("DOMContentLoaded", () => {
