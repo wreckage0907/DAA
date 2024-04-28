@@ -1,9 +1,9 @@
 const topicNames = [
   "Sorting",
-  // "Greedy",
-  // "Dynamic Programming",
-  // "Divide and Conquer",
-  // "Backtracking",
+  "Greedy",
+  "Dynamic Programming",
+  "Divide and Conquer",
+  "Backtracking",
 ];
 function gendiv() {
   const container = document.querySelector(".container");
@@ -52,22 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const editor = ace.edit(canvas);
         editor.setTheme("ace/theme/twilight");
-        editor.session.setMode("ace/theme/github");
+        editor.session.setMode("ace/mode/c_cpp");
         editor.setValue("Loading...");
-        const path = filepath(topicDiv.querySelector("h2").textContent);
-        loadfile(path)
-          .then((data) => {
-            console.log("File contents:", data);
-            try {
-              editor.setValue(data);
-              console.log("File contents set in Ace Editor");
-            } catch (err) {
-              console.error("Error setting file contents in Ace Editor:", err);
-            }
-          })
-          .catch((error) => {
-            console.error("Error loading file:", error);
-          });
       } else {
         const canvas = topicDiv.querySelector("canvas");
         if (canvas) {

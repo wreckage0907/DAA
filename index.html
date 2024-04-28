@@ -5,16 +5,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js"
-      type="text/javascript"
       charset="utf-8"
     ></script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <!-- <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script> -->
+    <style>
+      body {
+        background-color: lightblue;
+        font-family: sans-serif;
+      }
+      h1 {
+        color: #1d1d1d;
+        text-align: center;
+      }
+      .topic {
+        background-color: #ffffff;
+        padding: 10px;
+        margin-bottom: 20px;
+        margin-left: 150px;
+        margin-right: 150px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        font-size: 10px;
+        max-width: 1000px;
+      }
+      .dropdown-btn {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+      }
+      .dropdown-btn::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: #1d1d1d transparent transparent transparent;
+        transition: transform 0.3s ease;
+      }
+      .dropdown-btn.active::after {
+        transform: rotate(180deg);
+      }
+    </style>
     <title>DAA</title>
   </head>
   <body>
     <div class="container">
       <h1>DAA CODES</h1>
     </div>
+
+    <script>
+      const topicNames = [
+        "Sorting",
+        "Greedy",
+        "Dynamic Programming",
+        "Divide and Conquer",
+        "Backtracking",
+      ];
+      function gendiv() {
+        const container = document.querySelector(".container");
+
+        topicNames.forEach((name) => {
+          const topicDiv = document.createElement("div");
+          topicDiv.className = "topic";
+
+          const heading = document.createElement("h2");
+          heading.textContent = name;
+          topicDiv.appendChild(heading);
+
+          const dropdownBtn = document.createElement("button");
+          dropdownBtn.className = "dropdown-btn";
+          topicDiv.appendChild(dropdownBtn);
+
+          container.appendChild(topicDiv);
+        });
+      }
+
+      function loadfile(path) {
+        return fetch(path)
+          .then((response) => response.text())
+          .catch((error) => console.log(error));
+      }
+
+      function filepath(topic) {
+        const map = {
+          Sorting: "./SORT/insertion.cpp",
+        };
+        return map[topic];
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        gendiv();
+        const dropdownButtons = document.querySelectorAll(".dropdown-btn");
+        dropdownButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.classList.toggle("active");
+            const topicDiv = btn.parentElement;
+            if (btn.classList.contains("active")) {
+              const canvas = document.createElement("canvas");
+              canvas.width = 800;
+              canvas.height = 400;
+              topicDiv.appendChild(canvas);
+              topicDiv.style.backgroundColor = "white";
+
+              const editor = ace.edit(canvas);
+              editor.setTheme("ace/theme/twilight");
+              editor.session.setMode("ace/mode/c_cpp");
+              editor.setValue("Loading...");
+            } else {
+              const canvas = topicDiv.querySelector("canvas");
+              if (canvas) {
+                canvas.remove();
+              }
+              topicDiv.style.backgroundColor = "";
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
