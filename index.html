@@ -24,7 +24,14 @@
         color: #1d1d1d;
         text-align: center;
       }
-
+      h2{
+        color: #000000;
+      }
+      h3{
+        color : #2d2d2d;
+        font-size: 15px;
+        font-family: monospace;
+      }
       .topic {
         background-color: #ffffff;
         padding: 10px;
@@ -36,6 +43,7 @@
         position: relative;
         font-size: 10px;
         max-width: 1000px;
+        border-radius: 8px;
       }
       .dropdown-btn {
         position: absolute;
@@ -67,6 +75,8 @@
         font-family: monospace;
         font-size: 14px;
         padding: 10px;
+        margin: 10px;
+       
       }
     </style>
     <title>DAA</title>
@@ -145,7 +155,7 @@
         };
         const ret = {};
         for (let i = 0; i < subtopic[topic].length; i++) {
-          ret[subtopic[topic][i]] = `./${topic}/${subtopic[topic][i]}.cpp`;
+          ret[subtopic[topic][i]] = `./${map[topic]}/${subtopic[topic][i]}.cpp`;
         }
         return ret;
       }
@@ -154,22 +164,27 @@
         gendiv();
         const dropdownButtons = document.querySelectorAll(".dropdown-btn");
         dropdownButtons.forEach((btn) => {
-          btn.addEventListener("click", () => {
+            btn.addEventListener("click", () => {
             btn.classList.toggle("active");
             const topicDiv = btn.parentElement;
             if (btn.classList.contains("active")) {
-              const editorContainer = document.createElement("div");
-              editorContainer.className = "editor-container";
-              topicDiv.appendChild(editorContainer);
-              const editor = ace.edit(editorContainer);
-              editor.setTheme("ace/theme/monokai");
-              editor.session.setMode("ace/mode/c_cpp");
-              editor.setValue("Loading...");
-              fetch(filepath(topicDiv.querySelector("h2").textContent))
-                .then((response) => response.json())
-                .then((data) => {
+              const topic = topicDiv.querySelector("h2").textContent;
+              const files = filepath(topic);
+              for (const key in files) {
+                  const sidehead = document.createElement("h3");
+                  sidehead.textContent = key;
+                  topicDiv.appendChild(sidehead);
+                  loadfile(files[key]).then((data) => {
+                  const editorContainer = document.createElement("div");
+                  editorContainer.className = "editor-container";
+                  topicDiv.appendChild(editorContainer);
+                  const editor = ace.edit(editorContainer);
+                  editor.setTheme("ace/theme/monokai");
+                  editor.session.setMode("ace/mode/c_cpp");
                   editor.setValue(data);
+                  editor.setReadOnly(true);
                 });
+              }
             } else {
               const editorContainer =
                 topicDiv.querySelector(".editor-container");
