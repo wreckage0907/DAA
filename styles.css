@@ -1,43 +1,64 @@
 body {
-    background-color: lightblue;
-    font-family: sans-serif;
-  }
-  h1 {
-    color: #1d1d1d;
-    text-align: center;
-  }
-  .topic {
-    background-color: #ffffff;
-    padding: 10px;
-    margin-bottom: 20px;
-    margin-left: 150px;
-    margin-right: 150px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    font-size: 10px;
-    max-width: 1000px;
-  }
-  .dropdown-btn {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-  .dropdown-btn::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 6px 5px 0 5px;
-    border-color: #1d1d1d transparent transparent transparent;
-    transition: transform 0.3s ease;
-  }
-  .dropdown-btn.active::after {
-    transform: rotate(180deg);
-  }
+  background-color: lightblue;
+  font-family: sans-serif;
+}
+h1 {
+  color: #1d1d1d;
+  text-align: center;
+}
+h2{
+  color: #000000;
+}
+h3{
+  color : #2d2d2d;
+  padding: 15px;
+  margin: 10px;
+  font-size: 15px;
+  font-family: monospace;
+}
+.topic {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-size: 10px;
+  max-width: 1000px;
+  border-radius: 8px;
+}
+.dropdown-btn {
+  position: absolute;
+  top: 30px;
+  right: 12px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.dropdown-btn::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: #1d1d1d transparent transparent transparent;
+  transition: transform 0.3s ease;
+}
+.dropdown-btn.active::after {
+  transform: rotate(180deg);
+}
+
+.editor-container {
+  width: 800px;
+  height: 400px;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 15px;
+  margin: 10px;
+ 
+}

@@ -7,194 +7,19 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js"
       charset="utf-8"
     ></script>
-    <!-- <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script> -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 
     <link
       rel="icon"
       type="image/png"
       href="data:image/png;base64,iVBORw0KGgo="
     />
-    <style>
-      body {
-        background-color: lightblue;
-        font-family: sans-serif;
-      }
-      h1 {
-        color: #1d1d1d;
-        text-align: center;
-      }
-      h2{
-        color: #000000;
-      }
-      h3{
-        color : #2d2d2d;
-        font-size: 15px;
-        font-family: monospace;
-      }
-      .topic {
-        background-color: #ffffff;
-        padding: 10px;
-        margin-bottom: 20px;
-        margin-left: 150px;
-        margin-right: 150px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        position: relative;
-        font-size: 10px;
-        max-width: 1000px;
-        border-radius: 8px;
-      }
-      .dropdown-btn {
-        position: absolute;
-        top: 30px;
-        right: 12px;
-        transform: translateY(-50%);
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-      }
-      .dropdown-btn::after {
-        content: "";
-        display: block;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 6px 5px 0 5px;
-        border-color: #1d1d1d transparent transparent transparent;
-        transition: transform 0.3s ease;
-      }
-      .dropdown-btn.active::after {
-        transform: rotate(180deg);
-      }
-
-      .editor-container {
-        width: 800px;
-        height: 400px;
-        font-family: monospace;
-        font-size: 14px;
-        padding: 10px;
-        margin: 10px;
-       
-      }
-    </style>
     <title>DAA</title>
   </head>
   <body>
     <div class="container">
       <h1>DAA CODES</h1>
     </div>
-
-    <script>
-      const topicNames = [
-        "Sorting",
-        "Greedy",
-        "Maximum Subarray Sum",
-        "Dynamic Programming",
-        "String Matching ",
-        "Backtracking",
-      ];
-
-      const subtopic = {
-        Sorting: ["InsertionSort", "MergeSort", "QuickSort"],
-        Greedy: ["SolidKnapsack"],
-        "Maximum Subarray Sum": ["MSS_DAC", "MSS_Kadane", "MSS_Naive"],
-        "Dynamic Programming": [
-          "LongestCommonSubsequence",
-          "MatrixChainMultiplication",
-          "TravellingSalesmanProblem",
-        ],
-        "String Matching ": [
-          "KnuttMorrisPrattAlgorithm",
-          "NaiveStringMatching",
-          "RabinKarpAlgorithm",
-        ],
-        Backtracking: [
-          "NQueens",
-          "SudokuSolver",
-          "GraphColouring",
-          "SubsetSum",
-          "StringPermutation_BT",
-        ],
-      };
-
-      function gendiv() {
-        const container = document.querySelector(".container");
-
-        topicNames.forEach((name) => {
-          const topicDiv = document.createElement("div");
-          topicDiv.className = "topic";
-
-          const heading = document.createElement("h2");
-          heading.textContent = name;
-          topicDiv.appendChild(heading);
-
-          const dropdownBtn = document.createElement("button");
-          dropdownBtn.className = "dropdown-btn";
-          topicDiv.appendChild(dropdownBtn);
-
-          container.appendChild(topicDiv);
-        });
-      }
-
-      function loadfile(path) {
-        return fetch(path)
-          .then((response) => response.text())
-          .catch((error) => console.log(error));
-      }
-
-      function filepath(topic) {
-        const map = {
-          Sorting: "./SORT",
-          Greedy: "./GREEDY",
-          "Maximum Subarray Sum": "./MSS",
-          "Dynamic Programming": "./DP",
-          "String Matching ": "./SM",
-          Backtracking: "./BT",
-        };
-        const ret = {};
-        for (let i = 0; i < subtopic[topic].length; i++) {
-          ret[subtopic[topic][i]] = `./${map[topic]}/${subtopic[topic][i]}.cpp`;
-        }
-        return ret;
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        gendiv();
-        const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-        dropdownButtons.forEach((btn) => {
-            btn.addEventListener("click", () => {
-            btn.classList.toggle("active");
-            const topicDiv = btn.parentElement;
-            if (btn.classList.contains("active")) {
-              const topic = topicDiv.querySelector("h2").textContent;
-              const files = filepath(topic);
-              for (const key in files) {
-                  const sidehead = document.createElement("h3");
-                  sidehead.textContent = key;
-                  topicDiv.appendChild(sidehead);
-                  loadfile(files[key]).then((data) => {
-                  const editorContainer = document.createElement("div");
-                  editorContainer.className = "editor-container";
-                  topicDiv.appendChild(editorContainer);
-                  const editor = ace.edit(editorContainer);
-                  editor.setTheme("ace/theme/monokai");
-                  editor.session.setMode("ace/mode/c_cpp");
-                  editor.setValue(data);
-                  editor.setReadOnly(true);
-                });
-              }
-            } else {
-              const editorContainer =
-                topicDiv.querySelector(".editor-container");
-              if (editorContainer) {
-                editorContainer.remove();
-              }
-            }
-          });
-        });
-      });
-    </script>
   </body>
 </html>
