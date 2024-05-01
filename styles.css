@@ -29,6 +29,10 @@ h3{
   max-width: 1000px;
   border-radius: 8px;
 }
+.topic:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 .dropdown-btn {
   position: absolute;
   top: 30px;
