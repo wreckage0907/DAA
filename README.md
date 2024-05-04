@@ -4,9 +4,9 @@ This project showcases various algorithmic concepts.
 
 ### Concepts Covered
 
-- **Sorting**: Explore different sorting algorithms like Bubble Sort, Quick Sort, and Merge Sort.
+- **Sorting**: Explore different sorting algorithms like Insertion Sort, Quick Sort, and Merge Sort.
   
-- **Greedy Algorithms**: Learn about Greedy algorithms such as Dijkstra's shortest path algorithm or Huffman coding.
+- **Greedy Algorithms**: Learn about Greedy algorithms such as activity selection.
   
 - **Maximum Subarray Sum**: Understand algorithms like Kadane's Algorithm for finding the maximum sum of a contiguous subarray.
   
