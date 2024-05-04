@@ -17,7 +17,7 @@ const subtopic = {
     "TravellingSalesmanProblem",
     "SolidKnapsack",
     "RodCutting_BottomUp",
-    "RodCutting_TopDown"
+    "RodCutting_TopDown",
   ],
   "String Matching ": [
     "KnuttMorrisPrattAlgorithm",
@@ -25,8 +25,7 @@ const subtopic = {
     "RabinKarpAlgorithm",
     "StringPermutation_Naive",
     "CyclicRotation",
-    "DeleteRepeatedSubstrings"
-
+    "DeleteRepeatedSubstrings",
   ],
   Backtracking: [
     "NQueens",
@@ -79,40 +78,59 @@ function filepath(topic) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-gendiv();
-const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-dropdownButtons.forEach((btn) => {
-btn.addEventListener("click", () => {
-btn.classList.toggle("active");
-const topicDiv = btn.parentElement;
-if (btn.classList.contains("active")) {
-  const topic = topicDiv.querySelector("h2").textContent;
-  const files = filepath(topic);
+  gendiv();
+  const dropdownButtons = document.querySelectorAll(".dropdown-btn");
+  dropdownButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent event propagation
+      btn.classList.toggle("active");
+      const topicDiv = btn.parentElement;
+      if (btn.classList.contains("active")) {
+        const topic = topicDiv.querySelector("h2").textContent;
+        const files = filepath(topic);
 
-  for (const key in files) {
-    const sidehead = document.createElement("h3");
-    sidehead.textContent = key;
-    topicDiv.appendChild(sidehead);
+        for (const key in files) {
+          const sidehead = document.createElement("h3");
+          sidehead.textContent = key;
+          topicDiv.appendChild(sidehead);
 
-    const editorContainer = document.createElement("div");
-    editorContainer.className = "editor-container";
-    topicDiv.appendChild(editorContainer);
-    const editor = ace.edit(editorContainer);
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/c_cpp");
-    editor.setValue("Loading...");
+          const editorContainer = document.createElement("div");
+          editorContainer.className = "editor-container";
+          topicDiv.appendChild(editorContainer);
+          const editor = ace.edit(editorContainer);
+          editor.setTheme("ace/theme/monokai");
+          editor.session.setMode("ace/mode/c_cpp");
+          editor.setValue("Loading...");
 
-    loadfile(files[key]).then((data) => {
-      editor.setValue(data);
-      editor.setReadOnly(true);
+          loadfile(files[key]).then((data) => {
+            editor.setValue(data);
+            editor.setReadOnly(true);
+          });
+        }
+      } else {
+        const editorContainers =
+          topicDiv.querySelectorAll(".editor-container");
+        const sideheads = topicDiv.querySelectorAll("h3");
+        editorContainers.forEach((container) => container.remove());
+        sideheads.forEach((head) => head.remove());
+      }
     });
-  }
-} else {
-  const editorContainers = topicDiv.querySelectorAll(".editor-container");
-  const sideheads = topicDiv.querySelectorAll("h3");
-  editorContainers.forEach((container) => container.remove());
-  sideheads.forEach((head) => head.remove());
-}
-});
-});
+  });
+
+  // Add click event listener to the document
+  document.addEventListener("click", (e) => {
+    const dropdownButtons = document.querySelectorAll(".dropdown-btn");
+    dropdownButtons.forEach((btn) => {
+      const topicDiv = btn.parentElement;
+      const target = e.target;
+      if (!topicDiv.contains(target)) {
+        btn.classList.remove("active");
+        const editorContainers =
+          topicDiv.querySelectorAll(".editor-container");
+        const sideheads = topicDiv.querySelectorAll("h3");
+        editorContainers.forEach((container) => container.remove());
+        sideheads.forEach((head) => head.remove());
+      }
+    });
+  });
 });
