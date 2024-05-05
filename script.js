@@ -33,6 +33,7 @@ const subtopic = {
     "GraphColouring",
     "SubsetSum",
     "StringPermutation_BT",
+    "StringPermutation_2"
   ],
 };
 
