@@ -99,10 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
           editorContainer.className = "editor-container";
           topicDiv.appendChild(editorContainer);
           const editor = ace.edit(editorContainer);
-          editor.setTheme("ace/theme/monokai");
-          editor.session.setMode("ace/mode/c_cpp");
+          editor.setOptions({
+            wrap: true,
+            wrapLimit: '80',
+            theme: "ace/theme/monokai",
+            mode: "ace/mode/c_cpp",});
           editor.setValue("Loading...");
-
+          
           loadfile(files[key]).then((data) => {
             editor.setValue(data);
             editor.setReadOnly(true);
