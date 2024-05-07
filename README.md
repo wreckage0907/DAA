@@ -1,27 +1,20 @@
-**DAA Concepts Demonstrator**
+<h1 align="center">Welcome to Code Snippets for DAA  👋</h1>
+<p>
+</p>
 
-This project showcases various algorithmic concepts.
+> an website that has  c++ codes of various algorithms like greedy,dynamic programming and more
 
-### Concepts Covered
+### ✨ [Demo](https://wreckage0907.github.io/DAA/)
 
-- **Sorting**: Explore different sorting algorithms like Insertion Sort, Quick Sort, and Merge Sort.
-  
-- **Greedy Algorithms**: Learn about Greedy algorithms such as activity selection.
-  
-- **Maximum Subarray Sum**: Understand algorithms like Kadane's Algorithm for finding the maximum sum of a contiguous subarray.
-  
-- **Dynamic Programming**: Dive into Dynamic Programming solutions for problems like the 0/1 Knapsack or Longest Common Subsequence.
-  
-- **String Matching**: Discover algorithms like the Knuth-Morris-Pratt (KMP) algorithm for efficient string pattern matching.
-  
-- **Backtracking**: Implement backtracking algorithms for problems like the N-Queens problem or Sudoku solver.
+## Author
 
-### Access the Project
+👤 **M Girish Raghav**
 
-Visit the [website](https://wreckage0907.github.io/DAA/) to explore the codes for various algorithms.
+* Github: [@wreckage0907](https://github.com/wreckage0907)
 
-### Acknowledgements
+## Show your support
 
-Special thanks to Chandani for providing the algorithm codes displayed on this platform. You can find Chandani's work on [GitHub](https://github.com/Chandani122).
+Give a ⭐️ if this project helped you!
 
-Enjoy exploring algorithms! 🚀
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
