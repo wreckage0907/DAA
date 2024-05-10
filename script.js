@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  //check
   // Add click event listener to the document
   document.addEventListener("click", (e) => {
     const dropdownButtons = document.querySelectorAll(".dropdown-btn");
