@@ -1,0 +1,40 @@
+{
+  "Sorting": [
+    "InsertionSort",
+    "MergeSort",
+    "QuickSort"
+  ],
+  "Greedy": [
+    "Greedy_ActivitySelection",
+    "Greedy_CDs"
+  ],
+  "Maximum Subarray Sum": [
+    "MSS_DAC",
+    "MSS_Kadane",
+    "MSS_Naive"
+  ],
+  "Dynamic Programming": [
+    "LongestCommonSubsequence",
+    "MatrixChainMultiplication",
+    "TravellingSalesmanProblem",
+    "SolidKnapsack",
+    "RodCutting_BottomUp",
+    "RodCutting_TopDown"
+  ],
+  "String Matching ": [
+    "KnuttMorrisPrattAlgorithm",
+    "NaiveStringMatching",
+    "RabinKarpAlgorithm",
+    "StringPermutation_Naive",
+    "CyclicRotation",
+    "DeleteRepeatedSubstrings"
+  ],
+  "Backtracking": [
+    "NQueens",
+    "SudokuSolver",
+    "GraphColouring",
+    "SubsetSum",
+    "StringPermutation_BT",
+    "StringPermutation_2"
+  ]
+}
