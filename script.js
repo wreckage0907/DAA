@@ -7,35 +7,36 @@ const topicNames = [
   "Backtracking",
 ];
 
-const subtopic = {
-  Sorting: ["InsertionSort", "MergeSort", "QuickSort"],
-  Greedy: ["Greedy_ActivitySelection", "Greedy_CDs"],
-  "Maximum Subarray Sum": ["MSS_DAC", "MSS_Kadane", "MSS_Naive"],
-  "Dynamic Programming": [
-    "LongestCommonSubsequence",
-    "MatrixChainMultiplication",
-    "TravellingSalesmanProblem",
-    "SolidKnapsack",
-    "RodCutting_BottomUp",
-    "RodCutting_TopDown",
-  ],
-  "String Matching ": [
-    "KnuttMorrisPrattAlgorithm",
-    "NaiveStringMatching",
-    "RabinKarpAlgorithm",
-    "StringPermutation_Naive",
-    "CyclicRotation",
-    "DeleteRepeatedSubstrings",
-  ],
-  Backtracking: [
-    "NQueens",
-    "SudokuSolver",
-    "GraphColouring",
-    "SubsetSum",
-    "StringPermutation_BT",
-    "StringPermutation_2"
-  ],
-};
+let subtopic = {};
+
+async function fetchjson(filepath) {
+  try {
+    let response = await fetch(filepath);
+
+    if (!response.ok) {
+      const pathPrefix = "/" + window.location.href.split("/")[3] + "/";
+      response = await fetch(pathPrefix + filepath);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    }
+    const jsonData = await response.json();
+    subtopic = jsonData;
+    return subtopic;
+  } catch (error) {
+    console.error("Error fetching json:", error);
+    throw error;
+  }
+}
+
+fetchjson("/subtopics.json")
+  .then((data) => {
+    console.log("Subtopics fetched successfully:");
+    subtopic = data;
+  })
+  .catch((error) => {
+    console.error("Error fetching subtopics:", error);
+  });
 
 function gendiv() {
   const container = document.querySelector(".container");
@@ -101,19 +102,19 @@ document.addEventListener("DOMContentLoaded", () => {
           const editor = ace.edit(editorContainer);
           editor.setOptions({
             wrap: true,
-            wrapLimit: '80',
+            wrapLimit: "80",
             theme: "ace/theme/monokai",
-            mode: "ace/mode/c_cpp",});
+            mode: "ace/mode/c_cpp",
+          });
           editor.setValue("Loading...");
-          
+
           loadfile(files[key]).then((data) => {
             editor.setValue(data);
             editor.setReadOnly(true);
           });
         }
       } else {
-        const editorContainers =
-          topicDiv.querySelectorAll(".editor-container");
+        const editorContainers = topicDiv.querySelectorAll(".editor-container");
         const sideheads = topicDiv.querySelectorAll("h3");
         editorContainers.forEach((container) => container.remove());
         sideheads.forEach((head) => head.remove());
@@ -130,8 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const target = e.target;
       if (!topicDiv.contains(target)) {
         btn.classList.remove("active");
-        const editorContainers =
-          topicDiv.querySelectorAll(".editor-container");
+        const editorContainers = topicDiv.querySelectorAll(".editor-container");
         const sideheads = topicDiv.querySelectorAll("h3");
         editorContainers.forEach((container) => container.remove());
         sideheads.forEach((head) => head.remove());
