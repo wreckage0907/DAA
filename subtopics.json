@@ -1,10 +1,24 @@
 {
+    "Backtracking": [
+        "StringPermutation_BT.cpp",
+        "SubsetSum.cpp",
+        "NQueens.cpp",
+        "GraphColouring.cpp",
+        "StringPermutation_2.cpp",
+        "SudokuSolver.cpp"
+    ],
+    "Sorting": [
+        "QuickSort.cpp",
+        "InsertionSort.cpp",
+        "bubbleSort.cpp",
+        "MergeSort.cpp"
+    ],
     "String Matching ": [
-        "StringPermutation_Naive.cpp",
-        "NaiveStringMatching.cpp",
         "CyclicRotation.cpp",
-        "DeleteRepeatedSubstrings.cpp",
+        "NaiveStringMatching.cpp",
         "RabinKarpAlgorithm.cpp",
+        "StringPermutation_Naive.cpp",
+        "DeleteRepeatedSubstrings.cpp",
         "KnuttMorrisPrattAlgorithm.cpp"
     ],
     "Greedy": [
@@ -12,29 +26,16 @@
         "Greedy_CDs.cpp"
     ],
     "Maximum Subarray Sum": [
-        "MSS_DAC.cpp",
         "MSS_Kadane.cpp",
-        "MSS_Naive.cpp"
-    ],
-    "Backtracking": [
-        "SubsetSum.cpp",
-        "SudokuSolver.cpp",
-        "GraphColouring.cpp",
-        "StringPermutation_BT.cpp",
-        "StringPermutation_2.cpp",
-        "NQueens.cpp"
-    ],
-    "Sorting": [
-        "MergeSort.cpp",
-        "InsertionSort.cpp",
-        "QuickSort.cpp"
+        "MSS_Naive.cpp",
+        "MSS_DAC.cpp"
     ],
     "Dynamic Programming": [
         "MatrixChainMultiplication.cpp",
         "RodCutting_BottomUp.cpp",
-        "SolidKnapsack.cpp",
-        "TravellingSalesmanProblem.cpp",
         "LongestCommonSubsequence.cpp",
+        "TravellingSalesmanProblem.cpp",
+        "SolidKnapsack.cpp",
         "RodCutting_TopDown.cpp"
     ]
 }
