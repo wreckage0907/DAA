@@ -34,6 +34,7 @@
         "MatrixChainMultiplication.cpp",
         "RodCutting_BottomUp.cpp",
         "LongestCommonSubsequence.cpp",
+        "houserobber.cpp",
         "TravellingSalesmanProblem.cpp",
         "SolidKnapsack.cpp",
         "RodCutting_TopDown.cpp"
