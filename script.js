@@ -31,7 +31,7 @@ async function fetchjson(filepath) {
 
 fetchjson("/subtopics.json")
   .then((data) => {
-    console.log("Subtopics fetched successfully:");
+    console.log("Subtopics fetched successfully:",data);
     subtopic = data;
   })
   .catch((error) => {
@@ -65,16 +65,16 @@ function loadfile(path) {
 
 function filepath(topic) {
   const map = {
-    Sorting: "./SORT",
+    Sorting: "/SORT",
     Greedy: "./GREEDY",
-    "Maximum Subarray Sum": "./MSS",
-    "Dynamic Programming": "./DP",
-    "String Matching ": "./SM",
-    Backtracking: "./BT",
+    "Maximum Subarray Sum": "/MSS",
+    "Dynamic Programming": "/DP",
+    "String Matching ": "/SM",
+    Backtracking: "/BT",
   };
   const ret = {};
   for (let i = 0; i < subtopic[topic].length; i++) {
-    ret[subtopic[topic][i]] = `./${map[topic]}/${subtopic[topic][i]}.cpp`;
+    ret[subtopic[topic][i]] = `./CODES/${map[topic]}/${subtopic[topic][i]}`;
   }
   return ret;
 }
